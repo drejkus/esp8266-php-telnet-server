@@ -1,6 +1,8 @@
-# esp8266-php-telnet-server
+# esp8266-php-telnet-uploader
 
 just my share of what I hacked for my purpose of uploadig and testing files over telnet.
+
+Note: upload of files is a little slow, so please be patient
 
 setup on esp8266
 =============
@@ -18,6 +20,7 @@ setup on pc
 todo
 ====
 select IP from web page (now you have to change in php, ok for me :)
+Speed up upload?
 
 
 requirements
