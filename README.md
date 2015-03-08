@@ -23,6 +23,7 @@ select IP from web page (now you have to change in php, ok for me :)
 requirements
 =======
 PHP,webserver
-You need to know what IP you module has/gets - maybe from your router's DHCP table or you may set it statically.
+
+You need to know what IP you esp8266 module has/gets - maybe from your router's DHCP table or you may set it statically.
 (I don't think that there is any other good way around this as there is not much memory on the ESP8266 and for me only the telnet has small enough footprint.)
 
