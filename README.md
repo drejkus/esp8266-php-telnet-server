@@ -14,8 +14,8 @@ setup on pc
 ========
 1. Setup PHP&web server
 2. Copy files there (and maybe tweak a bit)
-3. Edit index.php - set module IP, folders, ...
-4. Open in web browser
+3. Open in web browser
+4. Optionally edit index.php and set different folder for files
 
 todo
 ====
