@@ -11,8 +11,8 @@ error_reporting(E_ALL);
 
 //echo '<pre>';
 
-$port = 2323;
-$address = '10.10.10.17';
+$port = $_POST['port'];
+$address = $_POST['ip'];
 $timeout = 5; //timeout to wait for response
 $files_dir = "./files/";
 

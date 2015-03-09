@@ -16,6 +16,20 @@
 
 
 <script>
+
+var code_list = ["=node.heap()","dofile(\"\")"];
+
+if (localStorage) {
+    var ip_address = '10.10.10.17';
+    var port = '2323';
+    if (localStorage.getItem('ip_address')) {
+    	ip_address = localStorage.getItem('ip_address');
+    } 
+    if (localStorage.getItem('port')) {
+    	ip_address = localStorage.getItem('port');
+    } 
+}
+
 (function( $ ) {
 		$.widget( "custom.combobox", {
 			_create: function() {
@@ -42,22 +56,13 @@
 					.autocomplete({
 						delay: 0,
 						minLength: 0,
-						source: $.proxy( this, "_source" )
+						/*source: $.proxy( this, "_source" )*/
+						source: code_list
 					})
 					.tooltip({
 						tooltipClass: "ui-state-highlight"
 					});
 
-				this._on( this.input, {
-					autocompleteselect: function( event, ui ) {
-						ui.item.option.selected = true;
-						this._trigger( "select", event, {
-							item: ui.item.option
-						});
-					},
-
-					autocompletechange: "_removeIfInvalid"
-				});
 			},
 
 			_createShowAllButton: function() {
@@ -92,10 +97,10 @@
 					});
 			},
 
-			_source: function( request, response ) {
+/*			_source: function( request, response ) {
 				var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
-				response( this.element.children( "option" ).map(function() {
-					var text = $( this ).text();
+				response( code_list.map(function() {
+					var text = $( this );
 					if ( this.value && ( !request.term || matcher.test(text) ) )
 						return {
 							label: text,
@@ -104,7 +109,7 @@
 						};
 				}) );
 			},
-
+*/
 /*			_removeIfInvalid: function( event, ui ) {
 
 				// Selected an item, nothing to do
@@ -148,10 +153,23 @@
 	})( jQuery );
 
 	$(function() {
+		$("#ip_address").val(ip_address).change(function() {
+			ip_address = $(this).val();
+	    	localStorage.setItem('ip_address', ip_address);			
+		});
+		$("#port").val(port).change(function() {
+			port = $(this).val();
+	    	localStorage.setItem('port', port);			
+		});
+		
+	
 		$( "#code_list" ).combobox();
 		$(this).esprun('llist');
 		$(this).esprun('rlist');
+		
+		
 	});
+
 
 
 
@@ -215,12 +233,13 @@ padding: 5px 10px;
 </head>
 <body onload = "">
     <fieldset>
-               
-<select id="code_list">
-	<option value=""></option>
-	<option value="=node.heap()">=node.heap()</option>
-	<option value='dofile("")'>dofile("")</option>
-</select>               
+         <legend>Remote settings </legend>
+    	Esp8266 module IP <input id="ip_address" value="" />:<input id="port" value="" />
+    </fieldset>
+
+    <fieldset>
+
+<span id="code_list" ></span>               
 <span id="buttons">
       <button type = "button"
               onclick = "$(this).esprun('run')">

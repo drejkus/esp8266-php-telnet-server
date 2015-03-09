@@ -3,7 +3,9 @@ $(function() {
 			$.fn.esprun = function(action) {
 					var params = { 
 						code: $("#code").val(),
-						cmd: action
+						cmd: action,
+						'port': port,
+						'ip': ip_address
 					}
 					if ( (action =='get')||(action=='down')||(action=='do')||(action=='put') ) {
 						params.file=$(this).data('file');
