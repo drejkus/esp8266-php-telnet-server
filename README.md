@@ -1,3 +1,6 @@
+**Obsolete NodeMCU thing, better use Arduino/ESP8266**
+
+
 # esp8266-php-telnet-uploader
 
 just my share of what I hacked for my purpose of uploadig and testing files over telnet.
